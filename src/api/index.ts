@@ -31,7 +31,10 @@ export interface Image {
     thumbnail: string;
     images: string[];  
   }
-  
+  export interface Category {
+    id: number;
+    name: string;
+  }
 
 const api = axios.create({
   baseURL: 'https://dummyjson.com/',
@@ -49,5 +52,11 @@ export const getProducts = async (): Promise<Product[]> => {
 
 export const getProductById = async (id: number): Promise<Product> => {
   const response: AxiosResponse<Product> = await api.get(`/products/${id}`);
+  return response.data;
+};
+
+export const getCategoryList = async (): Promise<Category[]> => {
+  const response = await axios.get<Category[]>('https://dummyjson.com/products/category-list');
+  
   return response.data;
 };
