@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts, Product } from '../../api';
+import { Link } from 'react-router-dom';
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [currentPage, setCurrentPage] = useState(1); // Joriy sahifa
-  const itemsPerPage = 8; // Har bir sahifada nechta mahsulot ko'rsatiladi
+  const [currentPage, setCurrentPage] = useState(1); 
+  const itemsPerPage = 8; 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,8 +32,8 @@ const ProductList: React.FC = () => {
         {currentProducts.map(product => (
           <div key={product.id} className='shadow-md p-6 rounded-lg'>
             <img src={product.images[0]} className='w-full h-64 object-contain hover:scale-[1.05] cursor-pointer transition' />
-            <p>{product.description}</p>
-            <p>Price: ${product.price}</p>
+         <Link to={`/single/${product.id}`}>   <p className='p1'>{product.description}</p></Link>
+            <p className='font-bold'>Price: ${product.price}</p>
           </div>
         ))}
       </div>

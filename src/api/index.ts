@@ -30,6 +30,7 @@ export interface Image {
     category: string;
     thumbnail: string;
     images: string[];  
+    image:string
   }
   export interface Category {
     id: number;
@@ -50,10 +51,6 @@ export const getProducts = async (): Promise<Product[]> => {
   return response.data.products;
 };
 
-export const getProductById = async (id: number): Promise<Product> => {
-  const response: AxiosResponse<Product> = await api.get(`/products/${id}`);
-  return response.data;
-};
 
 export const getCategoryList = async (): Promise<Category[]> => {
   const response = await axios.get<Category[]>('https://dummyjson.com/products/category-list');
