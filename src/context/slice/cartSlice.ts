@@ -1,88 +1,44 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface PayloadSchema {
+ interface Products {
   id: number;
   title: string;
   description: string;
-  category: string;
   price: number;
+  discountPercentage: number;
   rating: number;
   stock: number;
   brand: string;
-  images: string[];
-}
-
-export interface ProductsSchemaCart {
-  id: number;
-  title: string;
-  description: string;
   category: string;
-  price: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  images: string[];
-  quantity: number;
+  thumbnail: string;
+  images: string[];  
+  image:string
 }
 
-export interface cartSlice {
-  value: ProductsSchemaCart[];
+export  interface WishlistState {
+  value: Products[];
 }
 
-const initialState: cartSlice = {
-  value: JSON.parse(localStorage.getItem("cart") || "[]"),
+const initialState: WishlistState = {
+  value: JSON.parse(localStorage.getItem("wishlist") || "[]"),
 };
 
-export const cartSlice = createSlice({
-  name: "heart",
+const wishlistSlice  = createSlice({
+  name: "wishlist",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<PayloadSchema>) => {
-      const index = state.value.findIndex(
-        (i: ProductsSchemaCart) => i.id === action.payload.id
-      );
+    toggleHeart: (state, action: PayloadAction<Products>) => {
+      const index = state.value.findIndex((i) => i.id === action.payload.id);
       if (index < 0) {
-        state.value = [...state.value, { ...action.payload, quantity: 1 }];
+        state.value = [...state.value, action.payload];
+      } else {
+        state.value = state.value.filter((i) => i.id !== action.payload.id);
       }
-      localStorage.setItem("cart", JSON.stringify(state.value));
-    },
-    increment: (state, action: PayloadAction<PayloadSchema>) => {
-      const index = state.value.findIndex(
-        (i: ProductsSchemaCart) => i.id === action.payload.id
-      );
-      state.value = state.value.map((item: ProductsSchemaCart, inx: number) =>
-        inx === index ? { ...item, quantity: item.quantity + 1 } : item
-      );
-      localStorage.setItem("cart", JSON.stringify(state.value));
-    },
-    decrement: (state, action: PayloadAction<PayloadSchema>) => {
-      const index: number = state.value.findIndex(
-        (i: ProductsSchemaCart) => i.id === action.payload.id
-      );
-      state.value = state.value.map((item: ProductsSchemaCart, inx: number) =>
-        inx === index ? { ...item, quantity: item.quantity - 1 } : item
-      );
-      localStorage.setItem("cart", JSON.stringify(state.value));
-    },
-    removeFromCart: (state, action: PayloadAction<PayloadSchema>) => {
-      state.value = state.value.filter(
-        (item: ProductsSchemaCart) => item.id !== action.payload.id
-      );
-      localStorage.setItem("cart", JSON.stringify(state.value));
-    },
-    deleteAllCart: (state) => {
-      state.value = [];
-      localStorage.setItem("cart", JSON.stringify(state.value));
+      localStorage.setItem("wishlist", JSON.stringify(state.value));
     },
   },
 });
 
-export const {
-  addToCart,
-  decrement,
-  deleteAllCart,
-  increment,
-  removeFromCart,
-} = cartSlice.actions;
-export default cartSlice.reducer;   
+export const { toggleHeart } = wishlistSlice.actions;
+export default wishlistSlice.reducer;

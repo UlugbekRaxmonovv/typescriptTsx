@@ -5,7 +5,7 @@ import { IoPerson } from "react-icons/io5";
 import logo from '../../assets/imgs/logo.png'
 import Empty from "../../components/empty";
 const About = () => {
-    const cart:ProductsSchemaCart[] = useSelector((s: any) => s.cart.value);
+    const cart:ProductsSchemaCart[] = useSelector((s: any) => s.heart.value );
     console.log(cart);
     
 
