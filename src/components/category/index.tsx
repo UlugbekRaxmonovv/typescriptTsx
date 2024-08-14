@@ -3,7 +3,7 @@ import { getCategoryList, Category } from '../../api/index';
 
 const CategoryListComponent: React.FC = () => {
   const [categoryList, setCategoryList] = useState<Category[]>([]);
-  console.log(categoryList);
+  // console.log(categoryList);
   
   useEffect(() => {
     const fetchCategoryList = async () => {

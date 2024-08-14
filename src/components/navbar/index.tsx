@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ProductsSchemaCart } from "../../context/slice/heartSlice";
 
 const Index = () => {
+    const cart:ProductsSchemaCart[] = useSelector((s: any) => s.cart.value);
+   
     return (
        <header className="  static top-[0px] left-[0px] z-50 py-[20px]   bg-slate-400  " >
         <nav className="container flex  items-center justify-between">
@@ -9,8 +13,11 @@ const Index = () => {
             <li>
                     <Link to="/" className="text-white text-[20px]">Home</Link>
                 </li>
-                <li>
-                    <Link to="/" className="text-white text-[20px]">About</Link>
+                <li className="relative">
+                    <Link to="/about" className="text-white text-[20px]">Korzinka</Link>
+                   <div className="absolute  top-[-10px] left-[75px]">
+                   <span className="px-[2px] py-[1px] bg-red-500 rounded-lg text-white">{ cart.length }</span>
+                   </div>
                 </li>
                 <li>
                     <Link to="/" className="text-white text-[20px]">Katalog</Link>

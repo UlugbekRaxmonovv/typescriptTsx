@@ -10,8 +10,6 @@ import { VscChevronUp } from "react-icons/vsc";
 const Single: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<Product | null>(null);
-
-  
     useEffect(() => {
       axios
         .get(`https://fakestoreapi.com/products/${id}`)
@@ -36,7 +34,7 @@ const Single: React.FC = () => {
       <>
         <div className="container">
             <div className="flex py-[40px] items-start justify-between">
-                <div className="w-[600px] h-[600px] object-contain shadow-lg  px-[20px] flex justify-center items-center "> 
+                <div className="w-[600px] h-[600px] object-contain shadow-lg  px-[20px] flex justify-center items-center"> 
                 <img src={product?.image} alt="" className="w-[400px] h-[400px]" />
                 </div>
                 <div className="">
