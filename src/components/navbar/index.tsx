@@ -1,10 +1,13 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ProductsSchemaCart } from "../../context/slice/heartSlice";
-
 const Index = () => {
     const cart:ProductsSchemaCart[] = useSelector((s: any) => s.heart.value);
     const wishes= useSelector((s:any) => s.cart.value);
+    let {pathname} = useLocation();
+    if(pathname.includes('/login') || pathname.includes('/admin')){
+        return <></>;
+    }
     return (
        <header className="  static top-[0px] left-[0px] z-50 py-[20px]   bg-slate-400  " >
         <nav className="container flex  items-center justify-between">
@@ -26,7 +29,7 @@ const Index = () => {
                    </div>
                 </li>
                 <li>
-                    <Link to="/" className="text-white text-[20px]">Login</Link>
+                    <Link to="/login" className="text-white text-[20px]">Login</Link>
                 </li>
             </ul>
 
