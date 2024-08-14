@@ -18,14 +18,14 @@ const Index = () => {
                 </li>
                 <li className="relative">
                     <Link to="/about" className="text-white text-[20px]">Korzinka</Link>
-                   <div className="absolute  top-[-10px] left-[75px]">
-                   <span className="px-[2px] py-[1px] bg-red-500 rounded-lg text-white">{ cart.length }</span>
+                   <div className="absolute  top-[-10px] left-[75px] w-4 h-4 bg-gray-500 rounded-[50%] text-white grid place-items-center">
+                   <span className="text-xs">{ cart.length }</span>
                    </div>
                 </li>
                 <li className="relative">
                     <Link to="/wishlist" className="text-white text-[20px]">Wishlist</Link>
-                    <div className="absolute  top-[-10px] left-[70px]">
-                   <span className="px-[2px] py-[1px] bg-red-500 rounded-lg text-white">{ wishes.length }</span>
+                    <div className="absolute  -top-[10px] left-[70px] w-4 h-4 bg-gray-500 rounded-[50%] text-white grid place-items-center">
+                   <span className="text-xs ">{ wishes.length }</span>
                    </div>
                 </li>
                 <li>
