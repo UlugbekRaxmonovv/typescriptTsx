@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { ProductsSchemaCart } from "../../context/slice/heartSlice";
-import { RiMenuFill } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { TbMenuDeep } from "react-icons/tb";
 import { VscChromeClose } from "react-icons/vsc";
