@@ -14,6 +14,7 @@ const Single: React.FC = () => {
       axios
         .get(`https://fakestoreapi.com/products/${id}`)
         .then(res => {
+          
           setProduct(res.data);
         })
         .catch(error => {
@@ -33,13 +34,13 @@ const Single: React.FC = () => {
     return (
       <>
         <div className="container">
-            <div className="flex py-[40px] items-start justify-between">
-                <div className="w-[600px] h-[600px] object-contain shadow-lg  px-[20px] flex justify-center items-center"> 
-                <img src={product?.image} alt="" className="w-[400px] h-[400px]" />
+            <div className="desktop:flex py-[40px] items-start justify-between phone:flex flex-wrap phone:px-[10px] phone:gap-[40px]">
+                <div className="desktop:w-[600px] desktop:h-[600px] object-contain shadow-lg  px-[20px] flex justify-center items-center phone:h-[400px] "> 
+                <img src={product?.image} alt="" className="desktop:w-[400px] desktop:h-[400px] phone:w-[300px] phone:h-[300px]" />
                 </div>
                 <div className="">
-           <p className="w-[600px] text-2xl">{product?.description}</p>
-                <h1 className="py-[20px] text-xl w-[400px]">{product?.title}</h1>
+           <p className="desktop:w-[600px] text-2xl phone:w-[300px] phone:text-xl ">{product?.description}</p>
+                <h1 className="py-[20px] text-xl w-[400px]  phone:w-[250px]">{product?.title}</h1>
            <p className="font-bold text-xl">Price: ${product?.price}</p>
            <div className="flex items-center  justify-between px-[20px] my-[20px] border rounded w-[150px] h-[40px]">
            <div className="">
