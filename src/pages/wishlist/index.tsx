@@ -18,37 +18,31 @@ const Wishlist = () => {
        {
                 wishes?.length ? 
 
-                <div className='grid grid-cols-4 gap-[20px]'>
-           
+                <div className=' phone:grid phone:grid-cols-2 phone:gap-[20px] desktop:grid desktop:grid-cols-4 desktop:gap-[20px]'>
                 {wishes.map((product:any) => (
-                  <div key={product.id} className='shadow-md p-6 rounded-lg'>
-                    <img src={product.images[0]} className='w-full h-64 object-contain hover:scale-[1.05] cursor-pointer transition' />
-                 <Link to={`/single/${product.id}`}>   <p className='p1'>{product.description}</p></Link>
-                  <div className="flex items-center justify-between py-[20px]">
-                    <p className='font-bold'>Price: ${product.price}</p>
-                    <div className="flex gap-[20px] px-[10px]  justify-center items-center">
-                    <div className="text-lg cursor-pointer" >
-                      <span  onClick={() => dispatch(toggleHeart(product))}>
-                      {
-                    wishes?.some((item:any) => item.id === product.id) ? <FaHeart />
-                    : <FaRegHeart />
-                  }
-        
-                      </span>
-                  
+                  <div key={product.id} className='shadow-md p-6 rounded-lg phone:w-[180px]'>
+                    <img
+                      src={product.images[0]}
+                      className='desktop:w-full desktop:h-64 phone:h-[100px]  object-contain hover:scale-[1.05] cursor-pointer transition'
+                    />
+                    <Link to={`/single/${product.id}`}>
+                      <p className='p1'>{product.description}</p>
+                    </Link>
+                    <div className="flex items-center justify-between py-[20px]">
+                      <p className='font-bold'>Price: ${product.price}</p>
+                      <div className="flex gap-[20px] px-[10px] justify-center items-center">
+                        <div className="text-lg cursor-pointer">
+                          <span onClick={() => dispatch(toggleHeart(product))}>
+                            {wishes.some((item: any) => item.id === product.id) ? <FaHeart /> : <FaRegHeart />}
+                          </span>
+                        </div>
+                        <div className="text-2xl cursor-pointer">
+                          {cart.some((cartItem) => cartItem.id === product.id)
+                            ? <IoCart onClick={() => dispatch(addToCart(product))} />
+                            : <IoCartOutline onClick={() => dispatch(addToCart(product))} />}
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-2xl cursor-pointer">
-                    {
-                            cart?.some((cart) => cart.id === product.id) ? 
-                            <IoCart  onClick={() => dispatch(addToCart(product))}/>
-                            :
-                            <IoCartOutline    onClick={() => dispatch(addToCart(product))}/>
-        
-                        }
-                     
-                    </div>
-                    </div>
-                  </div>
                   </div>
                 ))}
               </div>

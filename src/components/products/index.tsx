@@ -84,12 +84,12 @@ const ProductList: React.FC = () => {
 
       {loading ? <Loading count={8} /> : null}
 
-      <div className='grid grid-cols-4 gap-[20px]'>
+      <div className=' phone:grid phone:grid-cols-2 phone:gap-[20px] desktop:grid desktop:grid-cols-4 desktop:gap-[20px]'>
         {currentProducts.map(product => (
           <div key={product.id} className='shadow-md p-6 rounded-lg'>
             <img
               src={product.images[0]}
-              className='w-full h-64 object-contain hover:scale-[1.05] cursor-pointer transition'
+              className='desktop:w-full desktop:h-64 phone:h-[100px] object-contain hover:scale-[1.05] cursor-pointer transition'
             />
             <Link to={`/single/${product.id}`}>
               <p className='p1'>{product.description}</p>
