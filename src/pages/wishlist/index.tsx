@@ -18,9 +18,9 @@ const Wishlist = () => {
        {
                 wishes?.length ? 
 
-                <div className=' phone:grid phone:grid-cols-2 phone:gap-[20px] desktop:grid desktop:grid-cols-4 desktop:gap-[20px]'>
+                <div className=' phone:grid phone:grid-cols-2 phone:gap-[5px] phone:px-[10px]  desktop:grid desktop:grid-cols-4 desktop:gap-[20px]'>
                 {wishes.map((product:any) => (
-                  <div key={product.id} className='shadow-md p-6 rounded-lg phone:w-[180px]'>
+                  <div key={product.id} className='shadow-md p-6 rounded-lg phone:w-[160px] phone:h-[250px]'>
                     <img
                       src={product.images[0]}
                       className='desktop:w-full desktop:h-64 phone:h-[100px]  object-contain hover:scale-[1.05] cursor-pointer transition'
